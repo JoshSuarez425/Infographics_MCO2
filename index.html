@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<!--
+  README:
+  This is the editable version of the infographic. All text, styles, and interactions can be modified through HTML, CSS, and JavaScript.
+  The infographic is not a screenshot or flattened image. Text is real HTML text, visual design is editable CSS, and interactions are editable JavaScript.
+-->
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SOCIAL ISSUES | Understanding challenges in the IT Era</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- EDITABLE BACKGROUND: CSS grid, glow, and tech effects are controlled in style.css -->
+  <div class="bg-grid" aria-hidden="true"></div>
+  <div class="bg-glow bg-glow-one" aria-hidden="true"></div>
+  <div class="bg-glow bg-glow-two" aria-hidden="true"></div>
+
+  <!-- HEADER: Contains the title link, navigation links, Edit Mode, and Cyber Mode / Simple Mode button -->
+  <header class="topbar">
+    <a class="brand" href="#home" aria-label="SOCIAL ISSUES home">
+      <span class="brand-mark" aria-hidden="true"></span>
+      <span id="brandTitle">SOCIAL ISSUES</span>
+    </a>
+
+    <nav class="nav-links" aria-label="Page sections">
+      <a href="#issues">Issues</a>
+      <a href="#quiz">Quiz</a>
+      <button class="nav-button" id="editModeOpen" type="button" aria-controls="editModeModal">
+        Edit Mode
+      </button>
+    </nav>
+
+    <button class="mode-toggle" id="modeToggle" type="button" aria-pressed="false">
+      Simple Mode
+    </button>
+  </header>
+
+  <main id="home">
+    <!-- HERO SECTION: Main title, subtitle, and main message from the infographic -->
+    <section class="hero reveal is-visible">
+      <div class="hero-copy">
+        <p class="eyebrow">Digital Awareness Infographic</p>
+        <h1 id="heroTitle">SOCIAL ISSUES</h1>
+        <p class="subtitle" id="heroSubtitle">Understanding challenges in the IT Era</p>
+
+        <div class="message-panel">
+          <span class="panel-label">Main Message</span>
+          <h2 id="mainMessage">USE TECHNOLOGY WISELY</h2>
+          <p id="supportingText">Be responsible and informed in your online activities and interactions.</p>
+        </div>
+      </div>
+
+      <!-- HERO TECH GRAPHIC: Built with editable HTML elements and CSS shapes, not an image -->
+      <div class="hero-visual" aria-hidden="true">
+        <div class="orbit orbit-one"></div>
+        <div class="orbit orbit-two"></div>
+        <div class="core-chip">
+          <span>IT ERA</span>
+          <strong>ONLINE SAFETY</strong>
+        </div>
+        <span class="hex-node node-one"></span>
+        <span class="hex-node node-two"></span>
+        <span class="hex-node node-three"></span>
+        <span class="hex-node node-four"></span>
+        <span class="signal-line line-one"></span>
+        <span class="signal-line line-two"></span>
+      </div>
+    </section>
+
+    <!-- ISSUE CARDS SECTION: Three clickable cards with original infographic content -->
+    <section class="issues-section reveal" id="issues">
+      <div class="section-heading">
+        <p class="eyebrow">Key Challenges</p>
+        <h2>Digital problems that need smart choices</h2>
+      </div>
+
+      <div class="issue-grid">
+        <article class="issue-card" data-issue="cyberbullying" tabindex="0" aria-label="Learn more about cyberbullying">
+          <div class="card-topline"></div>
+          <div class="card-icon cyber-icon" aria-hidden="true"></div>
+          <h3 id="cyberTitle">CYBERBULLYING</h3>
+          <p id="cyberDescription">Cyberbullying is a severe issue, affecting mental health and causing emotional distress in young individuals.</p>
+          <button class="learn-btn" type="button" data-issue="cyberbullying">Learn More</button>
+        </article>
+
+        <article class="issue-card" data-issue="misinformation" tabindex="0" aria-label="Learn more about misinformation">
+          <div class="card-topline"></div>
+          <div class="card-icon info-icon" aria-hidden="true"></div>
+          <h3 id="misinformationTitle">MISINFORMATION</h3>
+          <p id="misinformationDescription">Misinformation spreads rapidly online, leading to confusion and mistrust among communities and individuals.</p>
+          <button class="learn-btn" type="button" data-issue="misinformation">Learn More</button>
+        </article>
+
+        <article class="issue-card" data-issue="privacy" tabindex="0" aria-label="Learn more about privacy">
+          <div class="card-topline"></div>
+          <div class="card-icon privacy-icon" aria-hidden="true"></div>
+          <h3 id="privacyTitle">PRIVACY</h3>
+          <p id="privacyDescription">Data privacy concerns arise as personal information becomes vulnerable to misuse by companies and cybercriminals.</p>
+          <button class="learn-btn" type="button" data-issue="privacy">Learn More</button>
+        </article>
+      </div>
+    </section>
+
+    <!-- MAIN MESSAGE CALLOUT: Repeats the key reminder from the infographic -->
+    <section class="wisdom-strip reveal" aria-label="Use technology wisely reminder">
+      <div>
+        <p class="eyebrow">Reminder</p>
+        <h2 id="mainMessageReminder">USE TECHNOLOGY WISELY</h2>
+        <p id="supportingTextReminder">Be responsible and informed in your online activities and interactions.</p>
+      </div>
+      <div class="mini-circuit" aria-hidden="true">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </section>
+
+    <!-- QUIZ SECTION: Editable questions and answers, scored using script.js -->
+    <section class="quiz-section reveal" id="quiz">
+      <div class="section-heading">
+        <p class="eyebrow">Quick Check</p>
+        <h2>Digital Safety Quiz</h2>
+      </div>
+
+      <form class="quiz-form" id="quizForm">
+        <fieldset class="question-card">
+          <legend>1. What is one serious effect of cyberbullying?</legend>
+          <label>
+            <input type="radio" name="q1" value="a">
+            Faster internet speed
+          </label>
+          <label>
+            <input type="radio" name="q1" value="b">
+            Emotional distress in young individuals
+          </label>
+          <label>
+            <input type="radio" name="q1" value="c">
+            More private passwords
+          </label>
+        </fieldset>
+
+        <fieldset class="question-card">
+          <legend>2. What can misinformation cause online?</legend>
+          <label>
+            <input type="radio" name="q2" value="a">
+            Confusion and mistrust
+          </label>
+          <label>
+            <input type="radio" name="q2" value="b">
+            Better privacy protection
+          </label>
+          <label>
+            <input type="radio" name="q2" value="c">
+            Less need for responsibility
+          </label>
+        </fieldset>
+
+        <fieldset class="question-card">
+          <legend>3. Why is privacy a major concern in the IT Era?</legend>
+          <label>
+            <input type="radio" name="q3" value="a">
+            Personal information can be misused by companies and cybercriminals
+          </label>
+          <label>
+            <input type="radio" name="q3" value="b">
+            Online communities never share data
+          </label>
+          <label>
+            <input type="radio" name="q3" value="c">
+            Technology removes all risks
+          </label>
+        </fieldset>
+
+        <div class="quiz-actions">
+          <button class="primary-btn" type="submit">Check Score</button>
+          <button class="secondary-btn" type="button" id="resetQuiz">Reset</button>
+        </div>
+
+        <p class="quiz-result" id="quizResult" aria-live="polite"></p>
+      </form>
+    </section>
+
+    <!-- REPRESENTATIVES SECTION: Real editable text, not an image -->
+    <section class="representatives reveal" aria-label="Representatives">
+      <p class="eyebrow">Representatives</p>
+      <h2>Infographic Representatives</h2>
+      <ul class="representative-list">
+        <li id="representativeOne">Josh Emmanuel T. Suarez</li>
+        <li id="representativeTwo">Kelvin Shan Giest</li>
+      </ul>
+    </section>
+  </main>
+
+  <!-- FOOTER: Original final message from the infographic -->
+  <footer class="site-footer">
+    <p id="footerText">Promote a safer digital world!</p>
+  </footer>
+
+  <!-- MODAL POPUP: Filled by JavaScript when a card or Learn More button is clicked -->
+  <div class="modal" id="issueModal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <div class="modal-backdrop" data-close-modal></div>
+    <div class="modal-panel" role="document">
+      <button class="modal-close" type="button" data-close-modal aria-label="Close popup">X</button>
+      <p class="modal-tag" id="modalTag">Digital Issue</p>
+      <h2 id="modalTitle"></h2>
+      <p id="modalBody"></p>
+      <ul id="modalList"></ul>
+    </div>
+  </div>
+
+  <!-- EDIT MODE MODAL: Hidden by default and opened from the navigation bar -->
+  <div class="modal" id="editModeModal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="editModeTitle">
+    <div class="modal-backdrop" data-close-edit-modal></div>
+    <div class="modal-panel edit-modal-panel" role="document">
+      <button class="modal-close" id="editModeClose" type="button" data-close-edit-modal aria-label="Close Edit Mode">X</button>
+
+      <div class="edit-modal-header">
+        <p class="modal-tag">Editable Version</p>
+        <h2 id="editModeTitle">Edit Mode</h2>
+        <p>Customize the infographic content below. Changes update the page instantly.</p>
+      </div>
+
+      <form class="edit-form" id="editForm">
+        <div class="edit-grid">
+          <div class="edit-card">
+            <h3>Main Infographic Text</h3>
+            <label for="editHeroTitle">Main title</label>
+            <input class="edit-input" id="editHeroTitle" type="text" data-edit-field="mainTitle">
+
+            <label for="editHeroSubtitle">Subtitle</label>
+            <input class="edit-input" id="editHeroSubtitle" type="text" data-edit-field="subtitle">
+
+            <label for="editMainMessage">Main message</label>
+            <input class="edit-input" id="editMainMessage" type="text" data-edit-field="mainMessage">
+
+            <label for="editSupportingText">Supporting text</label>
+            <textarea class="edit-textarea" id="editSupportingText" rows="3" data-edit-field="supportingText"></textarea>
+          </div>
+
+          <div class="edit-card">
+            <h3>Issue Card 1</h3>
+            <label for="editCyberTitle">Cyberbullying title</label>
+            <input class="edit-input" id="editCyberTitle" type="text" data-edit-field="cyberTitle">
+
+            <label for="editCyberDescription">Cyberbullying description</label>
+            <textarea class="edit-textarea" id="editCyberDescription" rows="4" data-edit-field="cyberDescription"></textarea>
+          </div>
+
+          <div class="edit-card">
+            <h3>Issue Card 2</h3>
+            <label for="editMisinformationTitle">Misinformation title</label>
+            <input class="edit-input" id="editMisinformationTitle" type="text" data-edit-field="misinformationTitle">
+
+            <label for="editMisinformationDescription">Misinformation description</label>
+            <textarea class="edit-textarea" id="editMisinformationDescription" rows="4" data-edit-field="misinformationDescription"></textarea>
+          </div>
+
+          <div class="edit-card">
+            <h3>Issue Card 3</h3>
+            <label for="editPrivacyTitle">Privacy title</label>
+            <input class="edit-input" id="editPrivacyTitle" type="text" data-edit-field="privacyTitle">
+
+            <label for="editPrivacyDescription">Privacy description</label>
+            <textarea class="edit-textarea" id="editPrivacyDescription" rows="4" data-edit-field="privacyDescription"></textarea>
+          </div>
+
+          <div class="edit-card">
+            <h3>Footer and Representatives</h3>
+            <label for="editFooterText">Footer text</label>
+            <input class="edit-input" id="editFooterText" type="text" data-edit-field="footerText">
+
+            <label for="editRepresentativeOne">Representative 1</label>
+            <input class="edit-input" id="editRepresentativeOne" type="text" data-edit-field="representativeOne">
+
+            <label for="editRepresentativeTwo">Representative 2</label>
+            <input class="edit-input" id="editRepresentativeTwo" type="text" data-edit-field="representativeTwo">
+          </div>
+        </div>
+
+        <div class="edit-actions">
+          <button class="save-btn" id="saveChanges" type="button">Save Changes</button>
+          <button class="reset-edit-btn" id="resetOriginal" type="button">Reset to Original</button>
+          <span class="save-message" id="saveMessage" aria-live="polite"></span>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- BACK-TO-TOP BUTTON: Appears while scrolling and is controlled by script.js -->
+  <button class="back-to-top" id="backToTop" type="button" aria-label="Back to top">Top</button>
+
+  <script src="script.js"></script>
+</body>
+</html>
