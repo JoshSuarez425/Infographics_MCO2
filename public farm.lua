@@ -3410,21 +3410,7 @@ local function setupAntiAfk()
 	end)
 end
 
-task.spawn(function()
-	while true do
-		local myChar = localPlayer2.Character
-		local className = myChar and myChar:GetAttribute("Character")
-		local communicate = myChar and myChar:FindFirstChild("Communicate")
-		if communicate and className ~= "Purple" then
-			pcall(communicate.FireServer, communicate, {
-				Goal = "Change Character",
-				Character = "Purple",
-			})
-		end
-		task.wait(1)
-	end
 
-end)
 task.spawn(function()
 	local thrownFolder = workspace:FindFirstChild("Thrown")
 	if thrownFolder then
