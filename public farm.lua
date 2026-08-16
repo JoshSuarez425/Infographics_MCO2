@@ -76,7 +76,7 @@ end
 
 local playersService = game:GetService("Players")
 local localPlayer = playersService.LocalPlayer
-local baseFolder = "ZKAYHub"
+local baseFolder = "GalaxyHub"
 local userFolder = "ZKAYHub/PublicFarm/" .. localPlayer.Name
 local settingsPath = userFolder .. "/settings.json"
 
@@ -104,12 +104,12 @@ local function loadSettings()
 	end
 	local readOk, fileContent = pcall(readfile, settingsPath)
 	if not readOk then
-		warn("[ZKAYHub] Failed to read settings file:", fileContent)
+		warn("[GalaxyHub] Failed to read settings file:", fileContent)
 		return
 	end
 	local decodeOk, decoded = pcall(httpService.JSONDecode, httpService, fileContent)
 	if not decodeOk or type(decoded) ~= "table" then
-		warn("[ZKAYHub] Failed to decode settings file, using defaults")
+		warn("[GalaxyHub] Failed to decode settings file, using defaults")
 		return
 	end
 	for key, value in pairs(decoded) do
@@ -128,7 +128,7 @@ getgenv().session_start = getgenv().session_start or os.time()
 getgenv().carriedKills = getgenv().carriedKills or 0
 getgenv().emotes = getgenv().emotes or 0
 local screenGui = Instance.new("ScreenGui")
-screenGui.Name = "ZKAYFarmUI"
+screenGui.Name = "GalaxyFarmUI"
 screenGui.ResetOnSpawn = false
 screenGui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
 screenGui.Parent = game:GetService("CoreGui")
@@ -326,7 +326,7 @@ local function ensureMovingExclusion(character)
 	local folder = Instance.new("Folder")
 	folder.Name = "MovingExclusion"
 	pcall(function()
-		folder:SetAttribute("ZKAYOwned", true)
+		folder:SetAttribute("GalaxyOwned", true)
 	end)
 	folder.Parent = character
 	ownedFolders[folder] = true
@@ -1423,23 +1423,35 @@ end
 task.spawn(function()
 	local totalKillsVal = leaderstats:WaitForChild("Total Kills")
 	local lastEmoteSpin = localPlayer2:GetAttribute("LastEmoteSpin")
+
 	local initialTotalKills = totalKillsVal.Value
-	killsSinceLoad = totalKillsVal.Value - savedCarriedKills
+	local startingKills = initialTotalKills
+
+	killsSinceLoad = 0
+	carriedKills = 0
+
 	while true do
 		task.wait(0.25)
+
 		totalKills = totalKillsVal.Value
-		carriedKills = 0
-		sessionKills = totalKills - initialTotalKills
+
+		-- Count only kills made after this script started.
+		carriedKills = math.max(totalKills - startingKills, 0)
+		sessionKills = carriedKills
+		killsSinceLoad = carriedKills
+
 		local emoteSpinVal = localPlayer2:GetAttribute("LastEmoteSpin")
 		if emoteSpinVal ~= lastEmoteSpin then
 			savedEmotes = savedEmotes + 1
 			lastEmoteSpin = emoteSpinVal
 		end
+
 		local elapsedHours = math.max(os.time() - sessionStartTime, 1) / 3600
 		killsPerHour = math.floor(carriedKills / elapsedHours)
+
+		-- Update GUI
 		killsValueLabel.Text = tostring(carriedKills)
 	end
-
 end)
 task.spawn(function()
 	while true do
@@ -3384,7 +3396,7 @@ local function setupAimLoop()
 			return
 		end
 		if not currentlyTargeting then
-			warn("[ZKAYHub] Targeting: " .. currentTarget.Name)
+			warn("[GalaxyHub] Targeting: " .. currentTarget.Name)
 			currentlyTargeting = true
 			myHumanoid.AutoRotate = false
 		end
@@ -3410,7 +3422,21 @@ local function setupAntiAfk()
 	end)
 end
 
+task.spawn(function()
+	while true do
+		local myChar = localPlayer2.Character
+		local className = myChar and myChar:GetAttribute("Character")
+		local communicate = myChar and myChar:FindFirstChild("Communicate")
+		if communicate and className ~= "Purple" then
+			pcall(communicate.FireServer, communicate, {
+				Goal = "Change Character",
+				Character = "Purple",
+			})
+		end
+		task.wait(1)
+	end
 
+end)
 task.spawn(function()
 	local thrownFolder = workspace:FindFirstChild("Thrown")
 	if thrownFolder then
